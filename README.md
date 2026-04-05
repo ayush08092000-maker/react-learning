@@ -9,6 +9,8 @@ This repository contains my step-by-step learning of **React JS**.
 ```
 01_basics/
 02_components_props/
+   ├── 01_components/
+   └── 02_props/
 ```
 
 ---
@@ -24,8 +26,9 @@ This repository contains my step-by-step learning of **React JS**.
 
 ### ⚛️ Phase 2: Core React
 
-* Components
-* Props (coming soon)
+* Components ✅
+* Props ✅
+* Props Destructuring ✅
 
 ### 🚀 Phase 3: Advanced (Upcoming)
 
@@ -60,4 +63,4 @@ To master React JS and build real-world projects.
 
 ## ⭐ Note
 
-Each folder contains detailed code and explanation.
+Each folder contains practical examples and clean code for better understanding.
