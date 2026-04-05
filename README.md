@@ -1,7 +1,6 @@
 # 🚀 React Learning Journey
 
 This repository contains my step-by-step learning of **React JS**.
-I am learning concepts from basics to advanced and organizing them topic-wise.
 
 ---
 
@@ -9,38 +8,31 @@ I am learning concepts from basics to advanced and organizing them topic-wise.
 
 ```
 01_basics/
- ├── 01_basic_javaScript
- ├── 02_import_export
- ├── 03_Vertual_DOM & JSX
- ├── 04_vite_setup
+02_components_props/
 ```
 
 ---
 
-## 📚 Topics Covered
+## 📚 Learning Roadmap
 
-### 🔹 1. JavaScript Basics
+### 🔰 Phase 1: Fundamentals
 
-* DOM manipulation
-* Creating elements using JavaScript
+* JavaScript Basics
+* Import & Export
+* Virtual DOM & JSX
+* Vite Setup
 
-### 🔹 2. Import & Export
+### ⚛️ Phase 2: Core React
 
-* Named export
-* Default export
-* Mixed export
+* Components
+* Props (coming soon)
 
-### 🔹 3. Virtual DOM & JSX
+### 🚀 Phase 3: Advanced (Upcoming)
 
-* What is Virtual DOM
-* Difference between Real DOM & Virtual DOM
-* JSX syntax and rules
-
-### 🔹 4. Vite Setup
-
-* Creating React app using Vite
-* Project structure
-* Basic setup
+* State
+* Events
+* Hooks
+* Routing
 
 ---
 
@@ -68,4 +60,4 @@ To master React JS and build real-world projects.
 
 ## ⭐ Note
 
-This repository will be updated regularly as I continue learning React.
+Each folder contains detailed code and explanation.
