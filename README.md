@@ -9,33 +9,47 @@ This repository contains my step-by-step learning of **React JS**.
 ```
 01_basics/
 02_components_props/
-   ├── 01_components/
-   └── 02_props/
+├── 01_components/
+├── 02_props/
+├── Projects/
+│   └── 01_job_cards_project/
 ```
 
 ---
 
 ## 📚 Learning Roadmap
 
-### 🔰 Phase 1: Fundamentals
+### 🔰 Phase 1: Fundamentals ✅
 
-* JavaScript Basics
-* Import & Export
-* Virtual DOM & JSX
-* Vite Setup
+🔹 JavaScript Basics 
+🔹 Import & Export 
+🔹 Virtual DOM & JSX 
+🔹 Vite Setup 
 
-### ⚛️ Phase 2: Core React
+### ⚛️ Phase 2: Core React ✅
 
-* Components ✅
-* Props ✅
-* Props Destructuring ✅
+🔹 Components ✅
+🔹 Props ✅
+🔹 Props Destructuring ✅
+🔹 Job Cards Project ✅
 
-### 🚀 Phase 3: Advanced (Upcoming)
+### 🎨 Phase 3: UI & Styling
 
-* State
-* Events
-* Hooks
-* Routing
+🔹 CSS
+🔹 Tailwind CSS
+🔹 UI Design Project
+
+### 🧠 Phase 4: Logic & Hooks
+
+🔹 Functions
+🔹 Hooks
+🔹 useEffect
+🔹 State
+
+### 🌐 Phase 5: Routing & Advanced
+
+🔹 React Router
+🔹 Context API
 
 ---
 
