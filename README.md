@@ -1,18 +1,29 @@
 # 🚀 React Learning Journey
 
-This repository contains my step-by-step learning of **React JS**.
+This repository contains my **step-by-step journey of learning React JS**, covering fundamentals, core concepts, styling, and projects.
 
 ---
 
 ## 📂 Folder Structure
 
-```
+```id="m2k9sd"
+
 01_basics/
+├── 01_basic_javascript/
+├── 02_import_export/
+├── 03_virtual_DOM_&_JSX/
+├── 04_vite_setup/
+
 02_components_props/
 ├── 01_components/
 ├── 02_props/
-├── Projects/
-│   └── 01_job_cards_project/
+
+03_styling_ui/
+├── 01_module_css/
+├── 02_tailwind_css_basic/
+
+Projects/
+├── 01_job_cards_project/
 ```
 
 ---
@@ -21,50 +32,64 @@ This repository contains my step-by-step learning of **React JS**.
 
 ### 🔰 Phase 1: Fundamentals ✅
 
-🔹 JavaScript Basics 
-🔹 Import & Export 
-🔹 Virtual DOM & JSX 
-🔹 Vite Setup 
+* JavaScript Basics
+* Import & Export
+* Virtual DOM & JSX
+* Vite Setup
 
 ### ⚛️ Phase 2: Core React ✅
 
-🔹 Components ✅
-🔹 Props ✅
-🔹 Props Destructuring ✅
-🔹 Job Cards Project ✅
+* Components
+* Props
+* Props Destructuring
 
-### 🎨 Phase 3: UI & Styling
+### 🎨 Phase 3: UI & Styling 🚧
 
-🔹 CSS
-🔹 Tailwind CSS
-🔹 UI Design Project
+* Module CSS ✅
+* Tailwind CSS ✅
+* UI Design Practice
 
-### 🧠 Phase 4: Logic & Hooks
+### 🧠 Phase 4: Logic & Hooks (Upcoming)
 
-🔹 Functions
-🔹 Hooks
-🔹 useEffect
-🔹 State
+* useState
+* useEffect
 
-### 🌐 Phase 5: Routing & Advanced
+### 🌐 Phase 5: Advanced (Upcoming)
 
-🔹 React Router
-🔹 Context API
+* React Router
+* Context API
+
+---
+
+## 🚀 Projects
+
+### 🔹 Job Cards Project
+
+A simple React project to display job cards using reusable components and props.
+
+**Features:**
+
+* Component-based structure
+* Props usage
+* Clean UI layout
+
+*(More projects coming soon...)*
 
 ---
 
 ## 🎯 Goal
 
-To master React JS and build real-world projects.
+To become a **skilled React Developer** and build real-world projects.
 
 ---
 
-## 🛠️ Tech Used
+## 🛠️ Tech Stack
 
 * HTML
 * CSS
 * JavaScript
 * React JS
+* Tailwind CSS
 * Vite
 
 ---
@@ -77,4 +102,4 @@ To master React JS and build real-world projects.
 
 ## ⭐ Note
 
-Each folder contains practical examples and clean code for better understanding.
+Each folder contains **practical examples and clean code** for better understanding.

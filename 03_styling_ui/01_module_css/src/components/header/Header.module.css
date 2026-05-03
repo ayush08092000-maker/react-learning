@@ -1,0 +1,27 @@
+.head{
+    background-color: lightseagreen;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.logo {
+    text-decoration: underline;
+    background-color: lightcyan;
+    font-size: 25px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: darkorange;
+}
+
+.btn {
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border-color: black;
+}
+
