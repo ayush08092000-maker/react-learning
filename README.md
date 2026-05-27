@@ -1,6 +1,6 @@
 # 🚀 React Learning Journey
 
-This repository contains my **step-by-step journey of learning React JS**, including fundamentals, reusable components, styling techniques, responsive UI design, and mini projects built with modern React practices.
+This repository contains my step-by-step journey of learning React JS, including React fundamentals, hooks, form handling, local storage, responsive UI design, and mini projects built using modern React practices.
 
 ---
 
@@ -20,10 +20,21 @@ This repository contains my **step-by-step journey of learning React JS**, inclu
 03_styling_ui/
 ├── 01_module_css/
 ├── 02_tailwind_css_basic/
+├── 03_ui_project/
+
+04_hooks_state/
+├── 01_function/
+├── 02_usestate_counter_app/
+├── 03_useState_advance/
+├── 04_form_handling/
+├── 05_two_way_data_binding/
+├── 06_notes_app_project/
+├── 07_localstorage/
 
 Projects/
 ├── 01_job_cards_project/
 ├── 02_ui_project/
+├── 03_notes_app/
 ```
 
 ---
@@ -44,8 +55,8 @@ Projects/
 * Components
 * Reusable Components
 * Props
-* Props Destructuring
-* Dynamic Rendering with map()
+* Dynamic Rendering using map()
+* Event Handling
 
 ---
 
@@ -54,31 +65,24 @@ Projects/
 * Module CSS
 * Tailwind CSS
 * Responsive Design
-* Hover Effects
 * Modern UI Layouts
 * Reusable Card Components
 
 ---
 
-## 🧠 Phase 4: Logic & Hooks (Upcoming)
+## 🧠 Phase 4: Hooks & State Management ✅
 
-* useState
-* useEffect
-* Conditional Rendering
+* useState Hook
+* Counter App
+* Object & Array State Update
+* Previous State (prev)
 * Form Handling
+* Two-Way Data Binding
+* LocalStorage & SessionStorage
 
 ---
 
-## 🌐 Phase 5: Advanced React (Upcoming)
-
-* React Router
-* Context API
-* API Integration
-* State Management
-
----
-
-# 🚀 Projects
+## 🚀 Projects
 
 ## 🔹 Job Cards Project
 
@@ -86,9 +90,9 @@ A simple React project to display job cards using reusable components and props.
 
 ### Features
 
-* Component-based structure
-* Props usage
-* Clean UI layout
+* Reusable Components
+* Props Usage
+* Clean UI Design
 
 ---
 
@@ -99,12 +103,25 @@ A modern responsive UI built using React and Tailwind CSS.
 ### Features
 
 * Responsive Layout
-* Reusable Components
 * Dynamic Card Rendering
 * Horizontal Scroll Cards
 * Hover Animations
-* Modern UI Design
 * Tailwind CSS Styling
+
+---
+
+## 🔹 Notes App
+
+A modern Notes App built using React and Tailwind CSS.
+
+### Features
+
+* Add & Delete Notes
+* Form Handling
+* Dynamic Rendering using map()
+* Real-time UI Updates
+* Responsive Layout
+* Sticky Notes Style UI
 
 ---
 
@@ -121,7 +138,7 @@ A modern responsive UI built using React and Tailwind CSS.
 
 # 🎯 Goal
 
-To become a skilled React Developer by building practical and real-world projects while improving problem-solving and UI development skills.
+To become a skilled React Developer by building practical projects and improving problem-solving, UI development, and React concepts step by step.
 
 ---
 
@@ -133,4 +150,5 @@ To become a skilled React Developer by building practical and real-world project
 
 # ⭐ Note
 
-Each folder contains practical examples, experiments, and mini projects created during my React learning journey.
+Each folder contains practical examples, mini projects, and concept-based code 
+created during my React learning journey.

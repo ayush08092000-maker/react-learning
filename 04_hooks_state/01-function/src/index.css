@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+input {
+  padding: 10px 20px;
+  margin: 20px 50px;
+  width: 200px;
+  border-radius: 5px;
+  color: blue;
+  font-weight: 700;
+  font-size:larger;
+}
+
+.box{
+ margin: 50px 200px; 
+}
+
+.pase1 {
+  height: 100vh;
+  width: 90%;
+  background: #111;
+}
+.pase2 {
+  height: 100vh;
+  width: 90%;
+  background: #333;
+  margin: 10px 0px;
+}
+.pase3 {
+  height: 100vh;
+  width: 90%;
+  background: #555;
+}
