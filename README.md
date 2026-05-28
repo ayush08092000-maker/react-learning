@@ -30,6 +30,8 @@ This repository contains my step-by-step journey of learning React JS, including
 ├── 05_two_way_data_binding/
 ├── 06_notes_app_project/
 ├── 07_localstorage/
+├── 08_API_calling/
+├── 09_useEffect/
 
 Projects/
 ├── 01_job_cards_project/
@@ -79,6 +81,8 @@ Projects/
 * Form Handling
 * Two-Way Data Binding
 * LocalStorage & SessionStorage
+* API calling
+* useEffect Hookz
 
 ---
 
