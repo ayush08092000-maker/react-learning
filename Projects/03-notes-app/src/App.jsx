@@ -117,12 +117,12 @@ const App = () => {
                 <div className="overflow-hidden flex-1">
 
                   {/* Note title */}
-                  <h3 className='leading-tight text-xl font-bold break-words'>
+                  <h3 className='leading-tight text-xl font-bold wrap-break-words'>
                     {elem.title}
                   </h3>
 
                   {/* Note details */}
-                  <p className='mt-3 text-xs font-semibold text-gray-600 break-words overflow-y-auto h-25 scrollbar-hide'>
+                  <p className='mt-3 text-xs font-semibold text-gray-600 wrap-break-words overflow-y-auto h-25 scrollbar-hide'>
                     {elem.details}
                   </p>
 
