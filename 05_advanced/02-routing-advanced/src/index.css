@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+*{
+  font-family: initial;
+}
+
+html, body {
+    background: #000;
+    color: white;
+}
+
+.active {
+  color: rgb(0, 255, 149);
+  text-decoration: underline;
+}
+
+h1{
+  position:absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  font-size: 100px;
+  text-decoration: underline;
+  font-weight: bold;
+  white-space: nowrap;
+  text-transform: capitalize;
+}

@@ -1,6 +1,6 @@
 # 🚀 React Learning Journey
 
-This repository contains my step-by-step journey of learning React JS, including React fundamentals, components, props, hooks, API integration, form handling, local storage, responsive UI design, and projects built using modern React practices.
+This repository contains my step-by-step journey of learning React JS, including React fundamentals, components, props, hooks, API integration, routing, form handling, local storage, responsive UI design, and projects built using modern React practices.
 
 ---
 
@@ -53,6 +53,10 @@ The `Projects` folder contains the complete source code of all major projects bu
 ├── 08-api-calling/
 ├── 09-useEffect/
 ├── 10-gallery-project/
+
+05_advanced/
+├── 01-react-router-dom/
+├── 02-routing-advanced/
 
 Projects/
 ├── 01_job_cards_project/
@@ -107,6 +111,44 @@ Projects/
 * useEffect Hook
 * Loading States
 * Pagination Logic
+
+---
+
+## 🚀 Phase 5: Advanced React Concepts ✅
+
+
+### 🔹 React Router DOM Basics
+
+Learned basic page routing using React Router DOM.
+
+#### Concepts Covered
+
+* BrowserRouter
+* Routes
+* Route
+* Link
+
+
+---
+
+### 🔹 Advanced Routing
+
+Created a React Router practice project to understand advanced routing concepts.
+
+#### Concepts Covered
+
+* NavLink
+* Active Link Styling
+* Nested Routing
+* Outlet
+* Index Routes
+* Dynamic Routes
+* URL Parameters
+* useParams Hook
+* useNavigate Hook
+* Browser History Navigation
+* 404 Page Handling
+
 
 ---
 
@@ -187,6 +229,7 @@ A React image gallery that fetches images from the Picsum API and displays them 
 * CSS
 * JavaScript (ES6+)
 * React JS
+* React Router DOM
 * Tailwind CSS
 * Axios
 * Vite
