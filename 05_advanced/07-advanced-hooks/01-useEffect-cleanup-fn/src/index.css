@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background: yellowgreen;
+  padding: 10px 25px;
+  margin: 2px 10px;
+  border-radius: 10px;
+  font-size: large;
+}
+
+h1{
+  margin: 30px 0px 0px 10px; 
+}
