@@ -2,7 +2,7 @@
 
 This repository contains my step-by-step journey of learning **React JS**.
 
-It includes React fundamentals, components, props, hooks, state management, API integration, routing, Context API, responsive UI design, and practical projects built using modern React practices.
+It includes React fundamentals, components, props, hooks, state management, API integration, routing, Context API, performance optimization, responsive UI design, and practical projects built using modern React practices.
 
 ---
 
@@ -66,7 +66,20 @@ Example:
 ├── 03-child-to-parent-state/
 ├── 04-context-api-basics/
 ├── 05-multiple-context/
-└── 06-custom-context-provider/
+├── 06-custom-context-provider/
+└── 07-advanced-hooks/
+    ├── 01-useEffect-cleanup-fn/
+    ├── 02-useRef/
+    ├── 03-useReducer/
+    ├── 04-useLayoutEffect/
+    ├── 05-useMemo/
+    └── 06-useCallback/
+
+
+06_performance-optimization/
+└── 01-react-memo/
+    ├── 01_without-memo/
+    └── 02_with-memo/
 
 
 Projects/
@@ -221,6 +234,66 @@ Implemented scalable Context API structure.
 
 ---
 
+# 🔹 Advanced React Hooks
+
+Explored advanced React hooks and their practical use cases.
+
+### Concepts Covered
+
+- useEffect Cleanup Function
+- Component Unmount Handling
+- useRef Hook
+- DOM Element Reference
+- Store Mutable Values Without Re-render
+- useReducer Hook
+- Complex State Management
+- Reducer Function
+- Dispatch Actions
+- useLayoutEffect Hook
+- DOM Measurement Before Browser Paint
+- Avoid UI Flickering
+- useMemo Hook
+- Expensive Calculation Optimization
+- Memoizing Computed Values
+- useCallback Hook
+- Memoizing Function References
+- Prevent Function Recreation
+
+---
+
+# ⚡ Phase 6: Performance Optimization 🚧
+
+
+## 🔹 React.memo
+
+Learning component optimization using React.memo.
+
+React.memo prevents unnecessary component re-rendering when props remain the same.
+
+### Concepts Covered
+
+- React.memo()
+- Component Memoization
+- Parent Component Re-render
+- Child Component Optimization
+- Props Comparison
+- Preventing Unnecessary Re-renders
+
+### Current Examples
+
+- Without React.memo
+- With React.memo
+
+### Upcoming Concepts
+
+- React.memo with useMemo
+- React.memo with useCallback
+- Lazy Loading
+- Code Splitting
+
+---
+
+
 # 🚀 Projects
 
 
@@ -295,6 +368,7 @@ Image gallery application using API integration.
 - React Router DOM
 - React Context API
 - React Hooks
+- React Performance Optimization
 - Tailwind CSS
 - Axios
 - REST APIs
