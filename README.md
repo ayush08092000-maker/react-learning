@@ -77,9 +77,13 @@ Example:
 
 
 06_performance-optimization/
-└── 01-react-memo/
-    ├── 01_without-memo/
-    └── 02_with-memo/
+├── 01-react-memo/
+│   ├── 01_without-memo/
+│   └── 02_with-memo/
+│
+├── 02-memo-with-useMemo/
+├── 03-memo-with-useCallback/
+└── 04-lazy-loading/
 
 
 Projects/
@@ -261,35 +265,99 @@ Explored advanced React hooks and their practical use cases.
 
 ---
 
-# ⚡ Phase 6: Performance Optimization 🚧
+# ⚡ Phase 6: Performance Optimization ✅
 
+
+Learned different techniques to optimize React application performance by preventing unnecessary rendering and improving loading speed.
+
+---
 
 ## 🔹 React.memo
 
-Learning component optimization using React.memo.
-
-React.memo prevents unnecessary component re-rendering when props remain the same.
+React.memo prevents unnecessary component re-rendering when props remain unchanged.
 
 ### Concepts Covered
 
 - React.memo()
+- Higher Order Component (HOC)
 - Component Memoization
 - Parent Component Re-render
 - Child Component Optimization
 - Props Comparison
 - Preventing Unnecessary Re-renders
 
-### Current Examples
 
-- Without React.memo
-- With React.memo
+---
 
-### Upcoming Concepts
+## 🔹 React.memo with useMemo
 
-- React.memo with useMemo
-- React.memo with useCallback
-- Lazy Loading
+Learned how useMemo works with React.memo to prevent reference changes.
+
+### Concepts Covered
+
+- useMemo Hook
+- Memoizing Values
+- Object Reference Optimization
+- Array Reference Optimization
+- Preventing Expensive Recalculations
+- React.memo + useMemo Optimization
+
+
+---
+
+## 🔹 React.memo with useCallback
+
+Learned how useCallback prevents unnecessary function recreation.
+
+### Concepts Covered
+
+- useCallback Hook
+- Function Reference Memoization
+- Passing Functions as Props
+- React.memo + useCallback Optimization
+- Preventing Child Component Re-render
+
+
+---
+
+## 🔹 Lazy Loading
+
+Learned how to improve initial application loading performance.
+
+### Concepts Covered
+
+- React.lazy()
+- Suspense Component
 - Code Splitting
+- Dynamic Import
+- Component Based Lazy Loading
+- Route Based Lazy Loading
+- Reducing Initial Bundle Size
+
+---
+
+## Quick Revision
+
+```text
+React.memo
+    ↓
+Optimize Components
+
+
+useMemo
+    ↓
+Optimize Values / References
+
+
+useCallback
+    ↓
+Optimize Functions
+
+
+Lazy Loading
+    ↓
+Optimize Initial Loading
+```
 
 ---
 
