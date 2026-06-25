@@ -2,7 +2,7 @@
 
 This repository contains my step-by-step journey of learning **React JS**.
 
-It includes React fundamentals, components, props, hooks, state management, API integration, routing, Context API, performance optimization, responsive UI design, and practical projects built using modern React practices.
+It includes React fundamentals, components, props, hooks, custom hooks, state management, API integration, routing, Context API, performance optimization, responsive UI design, and practical projects built using modern React practices.
 
 ---
 
@@ -20,7 +20,7 @@ The `Projects` folder contains complete working React projects.
 
 Example:
 
-- `04_hooks_state/10-gallery-project/` → Concept practice project
+- `04_state_and_effects/10-gallery-project/` → Concept practice project
 - `Projects/04-gallery-project/` → Complete project source code
 
 ---
@@ -47,7 +47,7 @@ Example:
 └── 03_ui_project/
 
 
-04_hooks_state/
+04_state_and_effects/
 ├── 01-function/
 ├── 02-usestate-counter-app/
 ├── 03-useState-advance/
@@ -60,27 +60,27 @@ Example:
 └── 10-gallery-project/
 
 
-05_advanced/
-├── 01-react-router-dom/
-├── 02-routing-advanced/
-├── 03-child-to-parent-state/
-├── 04-context-api-basics/
-├── 05-multiple-context/
-├── 06-custom-context-provider/
-└── 07-advanced-hooks/
-    ├── 01-useEffect-cleanup-fn/
-    ├── 02-useRef/
-    ├── 03-useReducer/
-    ├── 04-useLayoutEffect/
-    ├── 05-useMemo/
-    └── 06-useCallback/
+05_advanced_concepts/
+├── 01_react_router_dom/
+├── 02_routing_advanced/
+├── 03_child_to_parent_state/
+├── 04_context_api_basic/
+├── 05_multiple_context/
+└── 06_custom_context_provider/
 
 
-06_performance-optimization/
+06_advanced_hooks/
+├── 01-useEffect-cleanup-fn/
+├── 02-useRef/
+├── 03-useReducer/
+├── 04-useLayoutEffect/
+├── 05-useMemo/
+├── 06-useCallback/
+└── 07-custom-hooks/
+
+
+07_performance_optimization/
 ├── 01-react-memo/
-│   ├── 01_without-memo/
-│   └── 02_with-memo/
-│
 ├── 02-memo-with-useMemo/
 ├── 03-memo-with-useCallback/
 └── 04-lazy-loading/
@@ -89,8 +89,8 @@ Example:
 Projects/
 ├── 01_job_cards_project/
 ├── 02_ui_project/
-├── 03_notes_app/
-└── 04-gallery_project/
+├── 03-notes-app/
+└── 04-gallery-project/
 ```
 
 ---
@@ -135,7 +135,7 @@ Projects/
 
 ---
 
-# 🧠 Phase 4: Hooks & State Management ✅
+# 🧠 Phase 4: State & Effects ✅
 
 ### Concepts Covered
 
@@ -180,7 +180,7 @@ Learned client-side routing in React applications.
 
 ---
 
-# 🔹 Child To Parent State Update
+## 🔹 Child To Parent State Update
 
 Learned how child components can update parent state by passing functions through props.
 
@@ -194,7 +194,7 @@ Learned how child components can update parent state by passing functions throug
 
 ---
 
-# 🔹 Context API Basics
+## 🔹 Context API Basics
 
 Learned global state management using React Context API.
 
@@ -208,7 +208,7 @@ Learned global state management using React Context API.
 
 ---
 
-# 🔹 Multiple Context API
+## 🔹 Multiple Context API
 
 Created multiple contexts for better state organization.
 
@@ -223,7 +223,7 @@ Created multiple contexts for better state organization.
 
 ---
 
-# 🔹 Custom Context Provider
+## 🔹 Custom Context Provider
 
 Implemented scalable Context API structure.
 
@@ -238,34 +238,106 @@ Implemented scalable Context API structure.
 
 ---
 
-# 🔹 Advanced React Hooks
+# 🪝 Phase 6: Advanced React Hooks ✅
 
-Explored advanced React hooks and their practical use cases.
+
+## 🔹 useEffect Cleanup Function
+
+Learned how to handle component cleanup before unmounting or before running effects again.
 
 ### Concepts Covered
 
-- useEffect Cleanup Function
+- Cleanup Function
 - Component Unmount Handling
+- Removing Event Listeners
+- Clearing Timers
+- Preventing Memory Leaks
+
+---
+
+## 🔹 useRef Hook
+
+Learned how to access DOM elements and store mutable values without causing re-renders.
+
+### Concepts Covered
+
 - useRef Hook
 - DOM Element Reference
+- Persist Values Between Renders
 - Store Mutable Values Without Re-render
+
+---
+
+## 🔹 useReducer Hook
+
+Learned advanced state management using reducer pattern.
+
+### Concepts Covered
+
 - useReducer Hook
-- Complex State Management
 - Reducer Function
+- Initial State
 - Dispatch Actions
+- Action Types
+- Managing Complex State
+
+---
+
+## 🔹 useLayoutEffect Hook
+
+Learned how to perform DOM updates before browser painting.
+
+### Concepts Covered
+
 - useLayoutEffect Hook
-- DOM Measurement Before Browser Paint
+- Runs Before Browser Paint
+- DOM Measurement
 - Avoid UI Flickering
+
+---
+
+## 🔹 useMemo Hook
+
+Learned how to optimize expensive calculations by memoizing computed values.
+
+### Concepts Covered
+
 - useMemo Hook
-- Expensive Calculation Optimization
 - Memoizing Computed Values
+- Dependency Array
+- Expensive Calculation Optimization
+
+---
+
+## 🔹 useCallback Hook
+
+Learned how to memoize functions and prevent unnecessary function recreation.
+
+### Concepts Covered
+
 - useCallback Hook
-- Memoizing Function References
+- Function Reference Memoization
+- Dependency Array
 - Prevent Function Recreation
 
 ---
 
-# ⚡ Phase 6: Performance Optimization ✅
+## 🔹 Custom Hooks
+
+Learned how to create reusable hooks by extracting common component logic.
+
+### Concepts Covered
+
+- Creating Custom Hooks
+- Extracting Reusable Logic
+- useToggle Hook
+- useFetch Hook
+- useForm Hook
+- Reusing Stateful Logic
+
+---
+
+# ⚡ Phase 7: Performance Optimization ✅
 
 
 Learned different techniques to optimize React application performance by preventing unnecessary rendering and improving loading speed.
@@ -436,6 +508,7 @@ Image gallery application using API integration.
 - React Router DOM
 - React Context API
 - React Hooks
+- Custom React Hooks
 - React Performance Optimization
 - Tailwind CSS
 - Axios
