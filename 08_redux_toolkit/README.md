@@ -1,0 +1,1262 @@
+# Redux Toolkit
+
+Redux Toolkit (RTK) is the official recommended way to write Redux
+logic.
+
+It simplifies Redux development by providing utilities such as:
+
+-   `configureStore()`
+-   `createSlice()`
+-   `createAsyncThunk()`
+-   `Provider`
+-   Redux DevTools integration
+
+## Installation
+
+``` bash
+npm install @reduxjs/toolkit react-redux
+```
+
+------------------------------------------------------------------------
+
+# 1. Why Redux?
+
+In a React application, state can be managed with:
+
+-   `useState`
+-   `useReducer`
+-   Props
+
+When many components need the same data, passing props through many
+components can become difficult.
+
+Redux provides a **centralized store** for application-level state.
+
+``` text
+                Redux Store
+                     |
+        ---------------------------
+        |            |            |
+      Counter       Todos        Cart
+        |            |            |
+    Component    Component    Component
+```
+
+------------------------------------------------------------------------
+
+# 2. Redux Core Concepts
+
+Important Redux concepts:
+
+-   State
+-   Store
+-   Action
+-   Reducer
+-   Dispatch
+-   Selector
+
+## State
+
+State is the data managed by Redux.
+
+``` js
+const initialState = {
+    value: 0,
+};
+```
+
+## Store
+
+The Redux Store contains the application's Redux state.
+
+``` js
+const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+    },
+});
+```
+
+A store can contain multiple reducers:
+
+``` js
+const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+        todo: todoReducer,
+        cart: cartReducer,
+        product: productReducer,
+    },
+});
+```
+
+## Action
+
+An action describes **what happened**.
+
+``` js
+dispatch(increment());
+```
+
+An action with data contains a payload:
+
+``` js
+dispatch(incrementByAmount(5));
+```
+
+Conceptually:
+
+``` js
+{
+    type: "counter/incrementByAmount",
+    payload: 5
+}
+```
+
+## Reducer
+
+A reducer contains the logic that changes state.
+
+``` js
+increment: (state) => {
+    state.value += 1;
+}
+```
+
+## Dispatch
+
+`dispatch()` sends an action to Redux.
+
+``` js
+const dispatch = useDispatch();
+
+dispatch(increment());
+```
+
+With payload:
+
+``` js
+dispatch(incrementByAmount(10));
+```
+
+## Selector
+
+A selector reads data from the Redux store.
+
+In React, `useSelector()` is commonly used:
+
+``` js
+const count = useSelector(
+    (state) => state.counter.value
+);
+```
+
+------------------------------------------------------------------------
+
+# 3. Redux Flow
+
+``` text
+Component
+    |
+    | dispatch(action)
+    v
+Redux Store
+    |
+    v
+Reducer
+    |
+    | updates state
+    v
+Redux Store
+    |
+    | useSelector()
+    v
+Component
+    |
+    v
+Re-render
+```
+
+Example:
+
+``` text
+Click +
+   |
+   v
+dispatch(increment())
+   |
+   v
+counter reducer
+   |
+   v
+state.value += 1
+   |
+   v
+Redux Store updated
+   |
+   v
+useSelector() gets new value
+   |
+   v
+Component re-renders
+```
+
+### Easy mental model
+
+``` text
+useSelector()
+    -> READ state
+
+useDispatch()
+    -> SEND action
+
+Reducer
+    -> CHANGE state
+
+Store
+    -> HOLD state
+```
+
+------------------------------------------------------------------------
+
+# 4. Redux Toolkit
+
+The main RTK concepts learned:
+
+``` text
+configureStore()
+createSlice()
+Provider
+useSelector()
+useDispatch()
+createAsyncThunk()
+extraReducers
+prepare()
+action.payload
+```
+
+------------------------------------------------------------------------
+
+# 5. configureStore()
+
+`configureStore()` creates the Redux store and registers slice reducers.
+
+Example:
+
+``` js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
+
+export const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+    },
+});
+```
+
+The key:
+
+``` js
+counter: counterReducer
+```
+
+becomes the path used by `useSelector()`:
+
+``` js
+state.counter.value
+```
+
+------------------------------------------------------------------------
+
+# 6. createSlice()
+
+`createSlice()` is one of the most important RTK functions.
+
+A slice normally contains:
+
+-   Name
+-   Initial state
+-   Reducers
+
+Example:
+
+``` js
+const initialState = {
+    value: 0,
+};
+
+const counterSlice = createSlice({
+    name: 'counter',
+
+    initialState,
+
+    reducers: {
+        increment: (state) => {
+            state.value += 1;
+        },
+
+        decrement: (state) => {
+            state.value -= 1;
+        },
+    },
+});
+```
+
+------------------------------------------------------------------------
+
+# 7. Slice
+
+A slice is **not a React component**.
+
+A slice represents a piece of Redux state and the logic related to that
+state.
+
+Example:
+
+``` text
+counter slice
+    |
+    ├── state
+    ├── reducers
+    └── actions
+```
+
+Todo example:
+
+``` text
+todo slice
+    |
+    ├── todos
+    ├── filter
+    ├── addTodo
+    ├── deleteTodo
+    ├── updateTodo
+    └── toggleTodo
+```
+
+------------------------------------------------------------------------
+
+# 8. Actions Generated by createSlice()
+
+When reducers are defined inside `createSlice()`:
+
+``` js
+reducers: {
+
+    increment: (state) => {
+        state.value += 1;
+    },
+
+    decrement: (state) => {
+        state.value -= 1;
+    },
+
+}
+```
+
+RTK automatically creates action creators.
+
+Export them:
+
+``` js
+export const {
+    increment,
+    decrement
+} = counterSlice.actions;
+```
+
+Then:
+
+``` js
+dispatch(increment());
+```
+
+------------------------------------------------------------------------
+
+# 9. Exporting the Reducer
+
+The slice reducer is exported separately:
+
+``` js
+export default counterSlice.reducer;
+```
+
+Then it is registered in the store:
+
+``` js
+import counterReducer from '../features/counter/counterSlice';
+
+const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+    },
+});
+```
+
+------------------------------------------------------------------------
+
+# 10. Provider
+
+React components need access to the Redux store.
+
+`Provider` makes the store available to its child components.
+
+``` js
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+
+createRoot(document.getElementById('root')).render(
+
+    <Provider store={store}>
+        <App />
+    </Provider>
+
+);
+```
+
+------------------------------------------------------------------------
+
+# 11. useSelector()
+
+`useSelector()` reads a selected value from the Redux store.
+
+``` js
+const count = useSelector(
+    (state) => state.counter.value
+);
+```
+
+Then:
+
+``` jsx
+<h1>{count}</h1>
+```
+
+The component subscribes to the selected Redux state and can re-render
+when that selected value changes.
+
+------------------------------------------------------------------------
+
+# 12. useDispatch()
+
+`useDispatch()` gives access to the Redux `dispatch()` function.
+
+``` js
+const dispatch = useDispatch();
+```
+
+Then:
+
+``` js
+dispatch(increment());
+```
+
+With payload:
+
+``` js
+dispatch(incrementByAmount(10));
+```
+
+------------------------------------------------------------------------
+
+# 13. Payload
+
+Payload is the data sent with an action.
+
+Example:
+
+``` js
+dispatch(incrementByAmount(10));
+```
+
+Reducer:
+
+``` js
+incrementByAmount: (state, action) => {
+    state.value += action.payload;
+}
+```
+
+Here:
+
+``` js
+action.payload
+```
+
+contains:
+
+``` text
+10
+```
+
+------------------------------------------------------------------------
+
+# 14. Immer in Redux Toolkit
+
+Normally Redux state should not be mutated directly.
+
+Redux Toolkit uses **Immer** internally, so we can write:
+
+``` js
+increment: (state) => {
+    state.value += 1;
+}
+```
+
+Although this looks like direct mutation, Immer internally produces the
+required immutable state update.
+
+This makes Redux code much simpler.
+
+------------------------------------------------------------------------
+
+# 15. Counter App
+
+The Counter App was used to learn the basic Redux Toolkit flow.
+
+### Features
+
+-   Increment
+-   Decrement
+-   Reset
+-   Increment by amount
+-   Decrement by amount
+
+State:
+
+``` js
+const initialState = {
+    value: 0,
+};
+```
+
+Reducer with payload:
+
+``` js
+incrementByAmount: (state, action) => {
+    state.value += action.payload;
+}
+```
+
+Reading state:
+
+``` js
+const count = useSelector(
+    (state) => state.counter.value
+);
+```
+
+Dispatching:
+
+``` js
+dispatch(increment());
+dispatch(decrement());
+dispatch(reset());
+dispatch(incrementByAmount(10));
+```
+
+### Concepts practiced
+
+``` text
+configureStore()
+createSlice()
+Provider
+useSelector()
+useDispatch()
+action.payload
+Immer
+```
+
+------------------------------------------------------------------------
+
+# 16. Todo App Without Redux Toolkit
+
+Before using RTK, I built a Todo App using React local state.
+
+``` js
+const [todos, setTodos] = useState([]);
+```
+
+### Features
+
+-   Add Todo
+-   Delete Todo
+-   Edit Todo
+-   Complete Todo
+-   Undo Todo
+-   Filter
+    -   All
+    -   Active
+    -   Completed
+-   Clear Completed
+
+This project helped compare:
+
+``` text
+React local state
+        vs
+Redux state
+```
+
+------------------------------------------------------------------------
+
+# 17. Todo App With Redux Toolkit
+
+The Todo App was then converted to Redux Toolkit.
+
+Redux state:
+
+``` js
+const initialState = {
+    todos: [],
+    filter: "all",
+};
+```
+
+Reducers:
+
+``` text
+addTodo
+deleteTodo
+updateTodo
+toggleTodo
+clearCompleted
+changeFilter
+```
+
+------------------------------------------------------------------------
+
+# 18. prepare()
+
+`prepare()` can be used when an action needs data to be prepared before
+reaching the reducer.
+
+Example:
+
+``` js
+addTodo: {
+
+    reducer: (state, action) => {
+        state.todos.unshift(action.payload);
+    },
+
+    prepare: (text) => {
+        return {
+            payload: {
+                id: nanoid(),
+                text,
+                completed: false,
+            }
+        };
+    }
+
+}
+```
+
+Then the component can simply use:
+
+``` js
+dispatch(addTodo(input));
+```
+
+`prepare()` creates the complete todo object.
+
+------------------------------------------------------------------------
+
+# 19. extraReducers
+
+`extraReducers` is used when a slice needs to respond to actions that
+are not defined in its own `reducers`.
+
+It is commonly used with `createAsyncThunk()`.
+
+``` js
+extraReducers: (builder) => {
+
+    builder
+        .addCase(fetchPosts.pending, ...)
+        .addCase(fetchPosts.fulfilled, ...)
+        .addCase(fetchPosts.rejected, ...)
+
+}
+```
+
+------------------------------------------------------------------------
+
+# 20. createAsyncThunk()
+
+`createAsyncThunk()` is used for asynchronous logic such as:
+
+-   API requests
+-   Fetching data
+-   Sending data
+-   Other async operations
+
+Example:
+
+``` js
+export const fetchPosts = createAsyncThunk(
+    'posts/fetchPosts',
+
+    async (page) => {
+
+        const response = await fetch(
+            `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=4`
+        );
+
+        return await response.json();
+    }
+);
+```
+
+------------------------------------------------------------------------
+
+# 21. createAsyncThunk Lifecycle
+
+A thunk automatically produces three important action states:
+
+``` text
+pending
+   |
+   v
+fulfilled
+
+or
+
+pending
+   |
+   v
+rejected
+```
+
+### pending
+
+The request has started.
+
+``` js
+.addCase(fetchPosts.pending, (state) => {
+    state.loading = true;
+    state.error = null;
+})
+```
+
+### fulfilled
+
+The request succeeded.
+
+``` js
+.addCase(fetchPosts.fulfilled, (state, action) => {
+    state.loading = false;
+    state.posts = action.payload;
+})
+```
+
+### rejected
+
+The request failed.
+
+``` js
+.addCase(fetchPosts.rejected, (state, action) => {
+    state.loading = false;
+    state.error = action.error.message;
+})
+```
+
+------------------------------------------------------------------------
+
+# 22. API State
+
+When working with an API, it is useful to maintain:
+
+``` js
+const initialState = {
+    posts: [],
+    loading: false,
+    error: null,
+};
+```
+
+The UI can then represent:
+
+``` text
+loading = true
+    |
+    v
+Loading...
+
+loading = false
+error = null
+    |
+    v
+Show data
+
+loading = false
+error != null
+    |
+    v
+Show error
+```
+
+------------------------------------------------------------------------
+
+# 23. Posts App
+
+The Posts App was created to practice:
+
+-   `createAsyncThunk()`
+-   API requests
+-   `extraReducers`
+-   `pending`
+-   `fulfilled`
+-   `rejected`
+-   Loading state
+-   Error state
+-   API pagination
+-   Redux state with API data
+
+The app uses JSONPlaceholder and fetches 4 posts per page.
+
+``` js
+useEffect(() => {
+    dispatch(fetchPosts(currentPage));
+}, [currentPage, dispatch]);
+```
+
+Pagination flow:
+
+``` text
+Current Page
+     |
+     v
+fetchPosts(page)
+     |
+     v
+API
+     |
+     v
+createAsyncThunk
+     |
+     v
+fulfilled
+     |
+     v
+Redux state
+     |
+     v
+UI
+```
+
+------------------------------------------------------------------------
+
+# 24. Cart App With Redux Toolkit
+
+The Cart App is the biggest RTK project in this section.
+
+It uses two Redux slices:
+
+``` text
+Redux Store
+    |
+    ├── cart
+    |
+    └── product
+```
+
+Store:
+
+``` js
+export const store = configureStore({
+    reducer: {
+        cart: cartReducer,
+        product: productReducer,
+    },
+});
+```
+
+------------------------------------------------------------------------
+
+# 25. Cart Slice
+
+Cart state:
+
+``` js
+const initialState = {
+    items: localStorage.getItem('cart')
+        ? JSON.parse(localStorage.getItem('cart'))
+        : [],
+};
+```
+
+Reducers:
+
+``` text
+addItem
+removeItem
+clearCart
+```
+
+Example:
+
+``` js
+addItem: (state, action) => {
+    state.items.unshift(action.payload);
+
+    localStorage.setItem(
+        'cart',
+        JSON.stringify(state.items)
+    );
+}
+```
+
+------------------------------------------------------------------------
+
+# 26. Product Slice
+
+Products are fetched using `createAsyncThunk()`.
+
+``` js
+export const fetchProducts = createAsyncThunk(
+    'product/fetchProducts',
+
+    async () => {
+
+        const response = await fetch(
+            'https://dummyjson.com/products'
+        );
+
+        const data = await response.json();
+
+        return data.products;
+    }
+);
+```
+
+The products are stored in Redux:
+
+``` js
+.addCase(fetchProducts.fulfilled, (state, action) => {
+    state.status = "succeeded";
+    state.items = action.payload;
+})
+```
+
+------------------------------------------------------------------------
+
+# 27. Cart App Features
+
+The project demonstrates:
+
+-   Product API
+-   Redux Toolkit
+-   Multiple slices
+-   `createAsyncThunk()`
+-   Add to cart
+-   Remove from cart
+-   Cart item count
+-   Quantity
+-   Total price
+-   localStorage
+-   React Router
+-   Redux + React Router
+-   Product page
+-   Cart page
+
+Basic structure:
+
+``` text
+Cart App
+|
+├── Products
+├── Add To Cart
+├── Remove From Cart
+├── Cart Count
+├── Quantity
+├── Total Price
+├── Place Order
+└── localStorage
+```
+
+------------------------------------------------------------------------
+
+# 28. Multiple Slices
+
+A Redux application can contain multiple slices.
+
+``` js
+configureStore({
+    reducer: {
+        cart: cartReducer,
+        product: productReducer,
+    },
+});
+```
+
+Access them separately:
+
+``` js
+const cartItems = useSelector(
+    (state) => state.cart.items
+);
+```
+
+``` js
+const products = useSelector(
+    (state) => state.product.items
+);
+```
+
+------------------------------------------------------------------------
+
+# 29. React State vs Redux State
+
+Use React state when the state is mainly local to a component.
+
+Example:
+
+``` js
+const [input, setInput] = useState("");
+```
+
+Use Redux when state needs to be shared across different parts of the
+application.
+
+Example:
+
+``` text
+Product List
+      |
+      v
+    Cart
+      |
+      v
+Header Cart Count
+      |
+      v
+   Cart Page
+```
+
+All of these can use the same Redux cart state.
+
+Not every piece of state needs to be stored in Redux.
+
+For example, form input can remain local:
+
+``` js
+const [input, setInput] = useState("");
+```
+
+------------------------------------------------------------------------
+
+# 30. Projects
+
+The `08_redux_toolkit` folder contains the learning/reference
+implementations:
+
+``` text
+08_redux_toolkit/
+|
+├── 01-counter-app
+├── 02-todo-app-without-RTK
+├── 03-todo-app-with-RTK
+├── 04-posts-app-with-createAsyncThunk
+├── 05-cart-app-with-RTK
+└── README.md
+```
+
+The main/polished project implementations are kept separately in:
+
+``` text
+Projects/
+|
+├── 05-todo-app
+├── 06-rtk-todo-app
+└── 07-rtk-cart-app
+```
+
+### Folder purpose
+
+``` text
+08_redux_toolkit
+    -> Learning + reference implementations
+
+Projects
+    -> Main project implementations
+```
+
+------------------------------------------------------------------------
+
+# 31. Learning Progression
+
+My Redux Toolkit learning progression:
+
+``` text
+01 Counter App
+      |
+      v
+Redux basics
+      |
+      v
+02 Todo without RTK
+      |
+      v
+Compare React state with Redux state
+      |
+      v
+03 Todo with RTK
+      |
+      v
+createSlice + Redux state
+      |
+      v
+04 Posts App
+      |
+      v
+createAsyncThunk + API + async states
+      |
+      v
+05 Cart App
+      |
+      v
+Multiple slices + API + localStorage + Router
+```
+
+------------------------------------------------------------------------
+
+# 32. What I Learned
+
+## Redux Fundamentals
+
+-   State
+-   Store
+-   Action
+-   Reducer
+-   Dispatch
+-   Selector
+
+## Redux Toolkit
+
+-   `configureStore()`
+-   `createSlice()`
+-   `Provider`
+-   `useDispatch()`
+-   `useSelector()`
+-   `createAsyncThunk()`
+-   `extraReducers`
+-   `prepare()`
+-   `action.payload`
+-   Immer
+
+## Async Redux
+
+-   API requests
+-   `pending`
+-   `fulfilled`
+-   `rejected`
+-   Loading state
+-   Error state
+
+## Practical Redux
+
+-   Multiple slices
+-   Todo state management
+-   Cart state management
+-   Product state management
+-   localStorage
+-   API data
+-   Pagination
+-   React Router + Redux
+
+------------------------------------------------------------------------
+
+# 33. Important Things to Remember
+
+``` text
+configureStore()
+    -> creates the Redux store
+
+createSlice()
+    -> creates slice state + reducers + action creators
+
+Provider
+    -> gives React components access to the Redux store
+
+useSelector()
+    -> reads data from Redux state
+
+useDispatch()
+    -> dispatches actions
+
+action.payload
+    -> carries data with an action
+
+extraReducers
+    -> handles external/generated actions
+
+createAsyncThunk()
+    -> handles common async operations
+
+Immer
+    -> allows simple mutation-like Redux code
+       while maintaining immutable updates
+```
+
+------------------------------------------------------------------------
+
+# 34. Final Redux Mental Model
+
+``` text
+                    Redux Store
+                         |
+             -------------------------
+             |           |           |
+           counter       todo       cart
+             |           |           |
+             -------------------------
+                         |
+                    React Components
+                         |
+             -------------------------
+             |                       |
+       useSelector()            useDispatch()
+             |                       |
+          READ state             SEND action
+                                     |
+                                     v
+                                  Reducer
+                                     |
+                                     v
+                              Update Redux State
+```
+
+Simple rule:
+
+``` text
+READ  -> useSelector()
+WRITE -> dispatch(action)
+LOGIC -> reducer
+STATE -> Redux Store
+```
+
+------------------------------------------------------------------------
+
+# 35. Next Topics
+
+After completing Redux Toolkit:
+
+``` text
+Redux Toolkit
+      |
+      v
+Testing
+      |
+      v
+Next.js
+```
+
+Possible Redux topics for future revision:
+
+-   Redux DevTools
+-   RTK Query
+-   Entity Adapter
+-   Testing Redux
+-   Advanced async patterns
